@@ -3,7 +3,7 @@ body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
     margin: 0;
-    padding: 0; /* Wichtig, um Ränder zu entfernen und das Menü an den Rand zu bringen */
+    padding: 0;
     background-color: #f4f4f4;
     color: #333;
 }
@@ -11,7 +11,7 @@ body {
 /* Container für den Hauptinhalt der Seite */
 .content-container {
     max-width: 800px;
-    margin: 20px auto; /* Abstand oben/unten und zentriert */
+    margin: 20px auto;
     background: #fff;
     padding: 30px;
     border-radius: 8px;
@@ -24,7 +24,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Stil für Links im Text */
 a {
-    color: #007bff; /* Typisches Blau für Links */
+    color: #007bff;
     text-decoration: none;
 }
 
