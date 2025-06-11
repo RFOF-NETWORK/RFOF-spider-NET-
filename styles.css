@@ -6,6 +6,7 @@ body {
     padding: 0;
     background-color: #f4f4f4;
     color: #333;
+    overflow-x: hidden; /* **WICHTIG:** Verhindert horizontales Scrollen */
 }
 
 /* Container für den Hauptinhalt der Seite */
@@ -16,6 +17,7 @@ body {
     padding: 30px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box; /* **WICHTIG:** Stellt sicher, dass Padding in max-width enthalten ist */
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -30,6 +32,12 @@ a {
 
 a:hover {
     text-decoration: underline;
+}
+
+/* **NEU: Regel für lange Wörter, um den Überlauf zu verhindern** */
+.long-word-break {
+    word-wrap: break-word; /* Bricht Wörter, wenn sie zu lang für die Zeile sind */
+    overflow-wrap: break-word; /* Eine modernere Alternative zu word-wrap */
 }
 
 /* Footer Styling */
