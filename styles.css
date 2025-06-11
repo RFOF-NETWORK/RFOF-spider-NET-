@@ -15,6 +15,7 @@ body {
     min-height: 100vh; /* Mindesthöhe des Bodys, um Footer am unteren Rand zu "halten" */
     display: flex;
     flex-direction: column; /* Ermöglicht Flexbox für Layout (Header, Main, Footer) */
+    position: relative; /* Wichtig für die Positionierung des improve-page-container */
 }
 
 /* Header Styling */
@@ -45,16 +46,25 @@ body {
 
 /* Container für den Hauptinhalt der Seite */
 .content-container {
-    max-width: 800px;
-    margin: 20px auto;
+    max-width: 800px; /* Maximale Breite des Inhalts */
+    margin: 20px auto; /* **WICHTIG:** Zentriert den Container horizontal */
     background: #fff;
-    padding: 30px;
+    padding: 30px; /* Genügend Innenabstand */
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    box-sizing: border-box; /* **WICHTIG:** Stellt sicher, dass Padding in max-width enthalten ist */
+    box-sizing: border-box; /* Stellt sicher, dass Padding in max-width enthalten ist */
     flex-grow: 1; /* Lässt den Inhaltscontainer den verfügbaren Platz einnehmen */
     overflow: hidden; /* Verhindert, dass interne Elemente über den Container ragen */
+    width: calc(100% - 40px); /* Anpassung für kleinere Bildschirme mit 20px Rand */
 }
+
+@media (max-width: 840px) { /* Wenn Bildschirm kleiner als 840px ist (800px + 2*20px padding) */
+    .content-container {
+        margin: 20px; /* Festen Rand von 20px lassen, ohne Zentrierung */
+        width: auto; /* Breite automatisch anpassen, um Padding zu berücksichtigen */
+    }
+}
+
 
 h1, h2, h3, h4, h5, h6 {
     color: #2c3e50;
@@ -90,19 +100,25 @@ footer {
     box-sizing: border-box; /* Stellt sicher, dass Padding in der Breite enthalten ist */
 }
 
-/* **NEU: Styling für den "Improve this page" Link** */
-.open-source-note {
-    font-size: 0.9em; /* Etwas kleiner als der Standardtext */
-    margin-top: 10px; /* Abstand zum Copyright */
-    color: #ccc; /* Eine helle Graufarbe für den Basistext */
+/* **NEU: Styling für den "Improve this page" Container und Link** */
+.improve-page-container {
+    position: absolute; /* Positioniert relativ zum body (der jetzt position: relative hat) */
+    bottom: 80px; /* Abstand vom unteren Rand des Viewports (über dem Footer) */
+    right: 20px; /* Abstand vom rechten Rand des Viewports */
+    font-size: 0.9em;
+    color: #555; /* Etwas dunkler als der Footer-Text */
+    text-align: right;
+    width: auto; /* Passt die Breite an den Inhalt an */
+    white-space: nowrap; /* Verhindert, dass der Text umbricht */
+    z-index: 90; /* Sorgt dafür, dass es über dem Hauptinhalt liegt, aber unter dem Header/Menü */
 }
 
-.improve-page-link {
+.improve-page-container a.improve-page-link {
     color: #007bff; /* Babyblau / Telegram/TON Blau */
     text-decoration: underline;
     font-weight: bold;
 }
 
-.improve-page-link:hover {
-    color: #4CAF50; /* Beispiel für einen Hover-Effekt (dunkleres Grün) */
+.improve-page-container a.improve-page-link:hover {
+    color: #4CAF50; /* Beispiel für einen Hover-Effekt */
 }
