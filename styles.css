@@ -70,7 +70,7 @@ a:hover {
     text-decoration: underline;
 }
 
-/* **NEU & WICHTIG: Regel für lange Wörter, um den Überlauf zu verhindern** */
+/* Regel für lange Wörter, um den Überlauf zu verhindern */
 .long-word-wrap-text {
     word-wrap: break-word; /* Bricht Wörter, wenn sie zu lang für die Zeile sind (älterer Standard) */
     overflow-wrap: break-word; /* Eine modernere Alternative zu word-wrap */
@@ -88,4 +88,21 @@ footer {
     width: 100%; /* Stellt sicher, dass der Footer die volle Breite einnimmt */
     flex-shrink: 0; /* Verhindert, dass der Footer schrumpft */
     box-sizing: border-box; /* Stellt sicher, dass Padding in der Breite enthalten ist */
+}
+
+/* **NEU: Styling für den "Improve this page" Link** */
+.open-source-note {
+    font-size: 0.9em; /* Etwas kleiner als der Standardtext */
+    margin-top: 10px; /* Abstand zum Copyright */
+    color: #ccc; /* Eine helle Graufarbe für den Basistext */
+}
+
+.improve-page-link {
+    color: #007bff; /* Babyblau / Telegram/TON Blau */
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.improve-page-link:hover {
+    color: #4CAF50; /* Beispiel für einen Hover-Effekt (dunkleres Grün) */
 }
