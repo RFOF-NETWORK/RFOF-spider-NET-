@@ -1,0 +1,43 @@
+/* Basis-Styling für den Inhalt */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0; /* Wichtig, um Ränder zu entfernen und das Menü an den Rand zu bringen */
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Container für den Hauptinhalt der Seite */
+.content-container {
+    max-width: 800px;
+    margin: 20px auto; /* Abstand oben/unten und zentriert */
+    background: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #2c3e50;
+}
+
+/* Stil für Links im Text */
+a {
+    color: #007bff; /* Typisches Blau für Links */
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Footer Styling */
+footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 30px;
+    background-color: #333;
+    color: #f4f4f4;
+    border-top: 1px solid #ddd;
+}
