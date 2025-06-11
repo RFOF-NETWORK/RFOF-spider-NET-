@@ -1,12 +1,46 @@
-/* Basis-Styling für den Inhalt */
+/* Globale Reset- und Basis-Styles */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%; /* Stellt sicher, dass der HTML-Bereich die volle Breite einnimmt */
+    overflow-x: hidden; /* **WICHTIG:** Verhindert horizontales Scrollen auf Body/HTML */
+    scroll-behavior: smooth; /* Optional: Sanftes Scrollen */
+}
+
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
+    background-color: #f4f4f4; /* Hellgrauer Hintergrund */
+    color: #333;
+    min-height: 100vh; /* Mindesthöhe des Bodys, um Footer am unteren Rand zu "halten" */
+    display: flex;
+    flex-direction: column; /* Ermöglicht Flexbox für Layout (Header, Main, Footer) */
+}
+
+/* Header Styling */
+.main-header {
+    background-color: white; /* Weißer Hintergrund für den Header */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Leichter Schatten */
+    padding: 10px 20px;
+    z-index: 100; /* Stellt sicher, dass der Header über anderen Inhalten liegt */
+    position: relative; /* Für Z-Index und Kontext des Menüs */
+}
+
+.header-content {
+    max-width: 1200px; /* Maximale Breite des Header-Inhalts */
+    margin: 0 auto; /* Zentriert den Header-Inhalt */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.site-title {
+    color: #007bff; /* Blaue Farbe für den Titel */
+    font-size: 2em;
+    font-weight: bold;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
-    color: #333;
-    overflow-x: hidden; /* **WICHTIG:** Verhindert horizontales Scrollen */
+    flex-shrink: 0; /* Verhindert, dass der Titel schrumpft */
 }
 
 /* Container für den Hauptinhalt der Seite */
@@ -18,6 +52,8 @@ body {
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     box-sizing: border-box; /* **WICHTIG:** Stellt sicher, dass Padding in max-width enthalten ist */
+    flex-grow: 1; /* Lässt den Inhaltscontainer den verfügbaren Platz einnehmen */
+    overflow: hidden; /* Verhindert, dass interne Elemente über den Container ragen */
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -34,18 +70,22 @@ a:hover {
     text-decoration: underline;
 }
 
-/* **NEU: Regel für lange Wörter, um den Überlauf zu verhindern** */
-.long-word-break {
-    word-wrap: break-word; /* Bricht Wörter, wenn sie zu lang für die Zeile sind */
+/* **NEU & WICHTIG: Regel für lange Wörter, um den Überlauf zu verhindern** */
+.long-word-wrap-text {
+    word-wrap: break-word; /* Bricht Wörter, wenn sie zu lang für die Zeile sind (älterer Standard) */
     overflow-wrap: break-word; /* Eine modernere Alternative zu word-wrap */
+    hyphens: auto; /* Optional: Erlaubt Silbentrennung für bessere Lesbarkeit */
 }
 
 /* Footer Styling */
 footer {
     text-align: center;
     padding: 20px;
-    margin-top: 30px;
-    background-color: #333;
+    margin-top: auto; /* Schiebt den Footer an den unteren Rand */
+    background-color: #333; /* Dunkelgrau wie gewünscht */
     color: #f4f4f4;
     border-top: 1px solid #ddd;
+    width: 100%; /* Stellt sicher, dass der Footer die volle Breite einnimmt */
+    flex-shrink: 0; /* Verhindert, dass der Footer schrumpft */
+    box-sizing: border-box; /* Stellt sicher, dass Padding in der Breite enthalten ist */
 }

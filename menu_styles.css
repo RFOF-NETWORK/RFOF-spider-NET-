@@ -1,23 +1,4 @@
 /* Grundlegende Styles für Header und Menü */
-.header-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    background-color: white;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    position: relative; /* Wichtig für absolute Positionierung des Menüs auf kleineren Bildschirmen */
-    z-index: 100; /* Stellt sicher, dass der Header über anderen Inhalten liegt */
-}
-
-.site-title {
-    color: #007bff;
-    font-size: 2em;
-    font-weight: bold;
-    margin: 0;
-    padding: 0;
-}
-
 .navbar {
     display: flex;
     align-items: center;
