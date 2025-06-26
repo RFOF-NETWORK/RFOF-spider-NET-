@@ -1,124 +1,239 @@
-/* Globale Reset- und Basis-Styles */
-html, body {
+/* General body and container styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #FFFFFF; /* White background */
+    color: #333333; /* Dark text for contrast on white background */
+    line-height: 1.6;
     margin: 0;
     padding: 0;
-    width: 100%; /* Stellt sicher, dass der HTML-Bereich die volle Breite einnimmt */
-    overflow-x: hidden; /* **WICHTIG:** Verhindert horizontales Scrollen auf Body/HTML */
-    scroll-behavior: smooth; /* Optional: Sanftes Scrollen */
-}
-
-body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    background-color: #f4f4f4; /* Hellgrauer Hintergrund */
-    color: #333;
-    min-height: 100vh; /* Mindesthöhe des Bodys, um Footer am unteren Rand zu "halten" */
+    overflow-x: hidden; /* Prevent horizontal scroll */
+    min-height: 100vh;
     display: flex;
-    flex-direction: column; /* Ermöglicht Flexbox für Layout (Header, Main, Footer) */
-    position: relative; /* Wichtig für die Positionierung des improve-page-container */
+    flex-direction: column;
 }
 
 /* Header Styling */
 .main-header {
-    background-color: white; /* Weißer Hintergrund für den Header */
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Leichter Schatten */
-    padding: 10px 20px;
-    z-index: 100; /* Stellt sicher, dass der Header über anderen Inhalten liegt */
-    position: relative; /* Für Z-Index und Kontext des Menüs */
+    background-color: #FFFFFF; /* White header background */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Lighter shadow for white background */
+    padding: 10px 0; /* Adjusted padding to remove top/bottom gaps */
+    z-index: 100;
+    position: relative;
+    border-bottom: 1px solid #E0E0E0; /* Light gray border */
 }
 
 .header-content {
-    max-width: 1200px; /* Maximale Breite des Header-Inhalts */
-    margin: 0 auto; /* Zentriert den Header-Inhalt */
+    max-width: 960px; /* Constrain header content to align with main content */
+    margin: 0 auto; /* Center the header content */
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; /* Space between logo/title and navbar */
     align-items: center;
+    padding: 0 20px; /* Horizontal padding for content inside this constrained header */
+    box-sizing: border-box; /* Include padding in width */
+    width: 100%; /* Take full width within its max-width */
 }
 
-.site-title {
-    color: #007bff; /* Blaue Farbe für den Titel */
-    font-size: 2em;
+.site-title { /* This is the text title in the header */
+    color: #0088cc; /* Telegram/TON Blue */
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.5em; /* Larger, more prominent title */
     font-weight: bold;
     margin: 0;
     padding: 0;
-    flex-shrink: 0; /* Verhindert, dass der Titel schrumpft */
+    flex-shrink: 0;
+    text-shadow: none;
+    white-space: nowrap; /* Prevent wrapping */
+    overflow: hidden; /* Hide overflow */
+    text-overflow: ellipsis; /* Add ellipsis if truncated */
+    line-height: 1.2; /* Ensure consistent line height */
 }
 
-/* Container für den Hauptinhalt der Seite */
+/* Content Container */
 .content-container {
-    max-width: 800px; /* Maximale Breite des Inhalts */
-    margin: 20px auto; /* **WICHTIG:** Zentriert den Container horizontal */
-    background: #fff;
-    padding: 30px; /* Genügend Innenabstand */
+    max-width: 960px; /* This is the reference width for the whole page content */
+    margin: 2rem auto;
+    padding: 2.5rem;
+    background-color: #FFFFFF; /* White background for content blocks */
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    box-sizing: border-box; /* Stellt sicher, dass Padding in max-width enthalten ist */
-    flex-grow: 1; /* Lässt den Inhaltscontainer den verfügbaren Platz einnehmen */
-    overflow: hidden; /* Verhindert, dass interne Elemente über den Container ragen */
-    width: calc(100% - 40px); /* Anpassung für kleinere Bildschirme mit 20px Rand */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); /* Lighter shadow */
+    box-sizing: border-box;
+    flex-grow: 1;
 }
 
-@media (max-width: 840px) { /* Wenn Bildschirm kleiner als 840px ist (800px + 2*20px padding) */
-    .content-container {
-        margin: 20px; /* Festen Rand von 20px lassen, ohne Zentrierung */
-        width: auto; /* Breite automatisch anpassen, um Padding zu berücksichtigen */
-    }
-}
-
-
+/* Headings */
 h1, h2, h3, h4, h5, h6 {
-    color: #2c3e50;
+    color: #0088cc; /* Telegram/TON Blue for headings */
+    font-family: 'Orbitron', sans-serif;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(0, 136, 204, 0.3);
+}
+h2 { font-size: 2.5em; margin-top: 2.5rem; }
+h3 { font-size: 1.8em; margin-top: 2rem; }
+h4 { font-size: 1.4em; margin-top: 1.5rem; }
+
+/* Paragraphs and Lists */
+p {
+    margin-bottom: 1rem;
+    font-size: 1.1em;
+    color: #333333; /* Dark text for paragraphs */
+}
+ul {
+    list-style: disc;
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+}
+ul li {
+    margin-bottom: 0.5rem;
+    font-size: 1.05em;
+    color: #333333; /* Dark text for list items */
 }
 
-/* Stil für Links im Text */
+/* Links */
 a {
-    color: #007bff;
+    color: #0088cc; /* Telegram/TON Blue for links */
     text-decoration: none;
+    transition: color 0.3s ease;
 }
-
 a:hover {
+    color: #00aaff; /* Slightly lighter blue on hover */
     text-decoration: underline;
 }
 
-/* Regel für lange Wörter, um den Überlauf zu verhindern */
-.long-word-wrap-text {
-    word-wrap: break-word; /* Bricht Wörter, wenn sie zu lang für die Zeile sind (älterer Standard) */
-    overflow-wrap: break-word; /* Eine modernere Alternative zu word-wrap */
-    hyphens: auto; /* Optional: Erlaubt Silbentrennung für bessere Lesbarkeit */
+/* Code Blocks - Styled for IT Experts */
+pre {
+    background-color: #f8f8f8; /* Light background for code */
+    color: #333333; /* Darker text for code */
+    padding: 1.2em;
+    border-radius: 6px;
+    overflow-x: auto;
+    margin-bottom: 1.5em;
+    font-family: 'Fira Code', 'Cascadia Code', monospace;
+    font-size: 0.95em;
+    border: 1px solid #e0e0e0;
+    box-shadow: inset 0 0 5px rgba(0,0,0,0.05);
+    white-space: pre-wrap;
+    word-break: break-all;
+}
+code {
+    background-color: #e0e0e0; /* Inline code background */
+    padding: 0.2em 0.4em;
+    border-radius: 3px;
+    font-family: 'Fira Code', 'Cascadia Code', monospace;
+    color: #0088cc; /* Blue for inline code */
+}
+ul code {
+    display: block;
+    white-space: pre-wrap;
+    margin-top: 0.5em;
+    background-color: #e0e0e0;
+    padding: 0.8em;
+    border-left: 3px solid #0088cc;
+    color: #333333;
 }
 
-/* Footer Styling */
+/* Improved Readability for longer text */
+.text-section {
+    padding: 1.5rem 0;
+    border-bottom: 1px dashed rgba(0, 136, 204, 0.15);
+    margin-bottom: 1.5rem;
+}
+.text-section:last-of-type {
+    border-bottom: none;
+}
+
+/* Footer */
 footer {
+    background-color: #f0f0f0; /* Lighter footer background */
+    color: #333333; /* Dark text for footer */
     text-align: center;
-    padding: 20px;
-    margin-top: auto; /* Schiebt den Footer an den unteren Rand */
-    background-color: #333; /* Dunkelgrau wie gewünscht */
-    color: #f4f4f4;
-    border-top: 1px solid #ddd;
-    width: 100%; /* Stellt sicher, dass der Footer die volle Breite einnimmt */
-    flex-shrink: 0; /* Verhindert, dass der Footer schrumpft */
-    box-sizing: border-box; /* Stellt sicher, dass Padding in der Breite enthalten ist */
+    padding: 1.5rem 1rem;
+    margin-top: 3rem;
+    font-size: 0.9em;
+    border-top: 1px solid #e0e0e0;
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.05); /* Lighter shadow */
+}
+footer a {
+    color: #0088cc;
+}
+footer a:hover {
+    color: #00aaff;
 }
 
-/* **NEU: Styling für den "Improve this page" Container und Link** */
+/* Styling for the "Improve this page" Container and Link */
 .improve-page-container {
-    position: absolute; /* Positioniert relativ zum body (der jetzt position: relative hat) */
-    bottom: 80px; /* Abstand vom unteren Rand des Viewports (über dem Footer) */
-    right: 20px; /* Abstand vom rechten Rand des Viewports */
-    font-size: 0.9em;
-    color: #555; /* Etwas dunkler als der Footer-Text */
-    text-align: right;
-    width: auto; /* Passt die Breite an den Inhalt an */
-    white-space: nowrap; /* Verhindert, dass der Text umbricht */
-    z-index: 90; /* Sorgt dafür, dass es über dem Hauptinhalt liegt, aber unter dem Header/Menü */
+    text-align: center;
+    padding: 15px;
+    margin: 20px auto;
+    max-width: 800px;
+    background-color: #ffffff; /* White background */
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    color: #333333;
+    font-size: 1em;
+}
+
+.improve-page-container p {
+    margin: 0;
+    color: #333333;
 }
 
 .improve-page-container a.improve-page-link {
-    color: #007bff; /* Babyblau / Telegram/TON Blau */
+    color: #0088cc;
     text-decoration: underline;
     font-weight: bold;
+    text-shadow: none;
 }
 
-.improve-page-container a.improve-page-link:hover {
-    color: #4CAF50; /* Beispiel für einen Hover-Effekt */
+.improve-page-link:hover {
+    color: #00aaff;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .site-title {
+        font-size: 1.8em;
+    }
+    .main-header .header-content {
+        flex-direction: column; /* Stack items vertically on mobile */
+        align-items: flex-start;
+        padding: 10px 15px;
+    }
+    .header-left-section {
+        width: 100%; /* Take full width on mobile */
+        justify-content: center; /* Center logo and title */
+        margin-bottom: 10px; /* Space below header title/logo on mobile */
+    }
+    .navbar {
+        width: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    /* Hero section adjusts for mobile */
+    .hero-section h1 {
+        font-size: 2.5em;
+    }
+    .hero-section p {
+        font-size: 1.1em;
+    }
+    /* Content adjusts for mobile */
+    .content-container {
+        padding: 1.5rem;
+    }
+    h2 { font-size: 2em; }
+    h3 { font-size: 1.5em; }
+    h4 { font-size: 1.2em; }
+    /* Search bar adjustments */
+    .praiai-search-container {
+        margin: 20px 15px;
+        border-radius: 30px;
+    }
+    .praiai-search-input {
+        padding: 12px 20px;
+        font-size: 1em;
+    }
+    .praiai-search-button {
+        padding: 12px 20px;
+    }
 }
