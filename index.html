@@ -1,71 +1,310 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RFOF-spider-NET - @Satoramy-PRAI</title>
+    <title>Ready Four Our Future: The Future is Now</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="menu_styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Orbitron:wght@700&display=swap" rel="stylesheet">
+    <style>
+        /* General body and container styles for light theme */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #FFFFFF; /* White background */
+            color: #333333; /* Dark text */
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden; /* Prevent horizontal scroll */
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header Specific Styles */
+        .main-header {
+            background-color: #FFFFFF; /* White header background */
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Lighter shadow */
+            padding: 10px 0; /* Vertical padding */
+            z-index: 100;
+            position: relative;
+            border-bottom: 1px solid #E0E0E0; /* Light gray border */
+        }
+        .header-content {
+            max-width: 960px; /* Aligned with main content */
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px; /* Horizontal padding */
+            box-sizing: border-box;
+            width: 100%;
+        }
+        .site-title { /* Text title in the header */
+            color: #0088cc; /* Telegram/TON Blue */
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.2em; /* Slightly adjusted for this repo's title length */
+            font-weight: bold;
+            margin: 0;
+            padding: 0;
+            flex-shrink: 0;
+            text-shadow: none;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            line-height: 1.2;
+            max-width: calc(100% - 100px); /* Adjust based on logo/hamburger space */
+        }
+
+        /* Hero Section Styling */
+        .hero-section {
+            background-image: linear-gradient(to bottom right, #4299e1, #2b6cb0); /* Blue gradient */
+            color: #ffffff;
+            padding: 80px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 2px solid #0088cc;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://raw.githubusercontent.com/RFOF-NETWORK/RFOF-NETWORK.github.io/main/assets/rfoff_network_hero_background.jpg') no-repeat center center/cover; /* Placeholder hero background */
+            opacity: 0.08;
+            z-index: 1;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+        .hero-content h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3.2em;
+            margin-bottom: 0.5em;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+        .hero-content p {
+            font-size: 1.2em;
+            line-height: 1.5;
+            max-width: 600px;
+            margin: 0 auto 1.5em;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+            word-wrap: break-word;
+        }
+        .hero-content .btn-primary {
+            background-color: #0088cc;
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        .hero-content .btn-primary:hover {
+            background-color: #00aaff;
+            transform: translateY(-2px);
+        }
+
+        /* Content Sections Styling */
+        .content-container {
+            max-width: 960px;
+            margin: 2rem auto;
+            padding: 2.5rem;
+            background-color: #ffffff; /* White background for content blocks */
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            box-sizing: border-box;
+            flex-grow: 1;
+        }
+        .section-title {
+            color: #0088cc; /* Telegram/TON Blue */
+            font-family: 'Orbitron', sans-serif;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid rgba(0, 136, 204, 0.3);
+        }
+        .content-highlight {
+            color: #555; /* Darker grey for content highlights */
+            font-style: italic;
+        }
+
+        /* Footer Styling */
+        footer {
+            background-color: #f0f0f0; /* Lighter footer background */
+            color: #333333; /* Dark text for footer */
+            text-align: center;
+            padding: 1.5rem 1rem;
+            margin-top: 3rem;
+            font-size: 0.9em;
+            border-top: 1px solid #e0e0e0;
+            box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.05);
+        }
+        footer a {
+            color: #0088cc;
+        }
+        footer a:hover {
+            color: #00aaff;
+        }
+
+        /* Improve Page Container */
+        .improve-page-container {
+            text-align: center;
+            padding: 15px;
+            margin: 20px auto;
+            max-width: 800px;
+            background-color: #ffffff;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            color: #333333;
+            font-size: 1em;
+        }
+        .improve-page-container p {
+            margin: 0;
+            color: #333333;
+        }
+        .improve-page-container a.improve-page-link {
+            color: #0088cc;
+            text-decoration: underline;
+            font-weight: bold;
+            text-shadow: none;
+        }
+        .improve-page-link:hover {
+            color: #00aaff;
+        }
+
+        /* Responsive Adjustments (Simplified for consistent template) */
+        @media (max-width: 768px) {
+            .site-title { font-size: 1.8em; }
+            .hero-content h1 { font-size: 2.5em; }
+            .hero-content p { font-size: 1.1em; }
+            .content-container { padding: 1.5rem; }
+            .main-header .header-content, .navbar { flex-direction: column; align-items: center; padding: 10px 15px; }
+            .site-title { max-width: 100%; text-align: center; }
+            .navbar .nav-list { /* Adjust menu for mobile to be full-width */ width: 100%; }
+        }
+    </style>
 </head>
 <body>
-
     <header class="main-header">
         <div class="header-content">
-            <h1 class="site-title">RFOF-spider-NET</h1>
+            <h1 class="site-title">Ready Four Our Future</h1>
             <nav class="navbar">
                 <div class="hamburger-icon" id="hamburger">
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                    <span class="bar"></span>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
                 </div>
-                <ul class="nav-links" id="navLinks">
-                    <li><a href="https://rfof-network.github.io/">RFOF-NETWORK (Hauptseite)</a></li>
-                    <li><a href="https://rfof-network-ready-for-our-future.github.io/RFOF-spider-NET-/">RFOF-spider-NET</a></li>
-                    <li><a href="https://qch-l-c.github.io/PRAI-KI-/">PRAI-KI</a></li>
-                    <li><a href="https://rfof-network.github.io/RFOF-NETWORK/">RFOF-NETWORK</a></li>
-                    <li><a href="https://rfof-network.github.io/PRAI/">PRAI</a></li>
-                    <li><a href="https://rfof-network.github.io/rfof-network.org/">rfof-network.org</a></li>
-                    <li><a href="https://rfof-network.github.io/Comprensive-rfof-bitcoin.org-PRAI-BOx-Blockchain-System_Programm-Fusions-Reactor-System/">PRAI-BOx Blockchain-System</a></li>
-                    <li><a href="https://rfof-network.github.io/BUBATZ-COIN-official-CSC-DCV-/">BUBATZ-COIN</a></li>
+                <ul class="nav-list" id="navLinks">
+                    <li><a href="https://rfof-network.github.io/" target="_blank">RFOFSpiderWeb.NET</a></li>
+                    <li><a href="https://rfof-network-ready-for-our-future.github.io/RFOF-spider-NET-/" target="_blank">Ready Four Our Future (Current)</a></li>
+                    <li><a href="https://qch-l-c.github.io/PRAI-KI-/" target="_blank">PRAI-OS</a></li>
+                    <li><a href="https://rfof-network.github.io/RFOF-NETWORK/" target="_blank">RFOF-NETWORK</a></li>
+                    <li><a href="https://rfof-network.github.io/PRAI-/#uebersicht" target="_blank">RPFOF</a></li>
+                    <li><a href="https://rfof-network.github.io/rfof-network.org/" target="_blank">QCH-L-C</a></li>
+                    <li><a href="https://rfof-network.github.io/Comprensive-rfof-bitcoin.org-PRAI-BOx-Blockchain-System_Programm-Fusions-Reactor-System/" target="_blank">rfof-bitcoin.org</a></li>
+                    <li><a href="https://rfof-network.github.io/BUBATZ-COIN-official-CSC-DCV-/" target="_blank">Golden Times</a></li>
+                    <li><a href="https://rfof-network.github.io/RFOF-x-PRAI_DOC_Ready-For-Our-Future/" target="_blank">DOC's & FAQ's</a></li>
                 </ul>
             </nav>
         </div>
     </header>
+
     <main class="content-container">
-        <section>
-            <h2>Willkommen beim RFOF-spider-NET</h2>
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1>Ready Four Our Future</h1>
+                <p>Leading the way in creating a decentralized, sustainable, and interconnected world through advanced blockchain solutions.</p>
+                <a href="#about" class="btn-primary">Discover Our Projects</a>
+            </div>
+        </section>
+
+        <section id="about" class="text-content">
+            <h2 class="section-title">About Ready Four Our Future</h2>
             <p>
-                RFOF🧠 Quantum Nano ABillity-Xp-Fps BOx_toBOx Matrix Bridge Matrix to (matrix) data worth Perpetuum mobile scalability PRAI spiderNET Blockchain is designed to become with The Open Network (TON) the largest of blockchain solutions (Web3.0/3.5 Speicherplatz for our new interspiderwebNET construction Web4.2) and @Satoramy-PRAI (Planet Rescuer AI)want so creating the new Bitcoin System and Internet.
+                Ready Four Our Future (RFOF) is at the forefront of leveraging **RFOF🧠 Quantum Nano ABillity-Xp-Fps BOx_toBOx Matrix Bridge Matrix** technology. Our **PRAI spiderNET Blockchain** is designed to integrate with **The Open Network (TON)** to become one of the largest blockchain solutions globally. This platform will provide **Web3.0/3.5 storage space** for our new **interspiderwebNET construction (Web4.2)**. Our ultimate goal, guided by **@Satoramy-PRAI (Planet Rescuer AI)**, is to create the new Bitcoin System and a truly decentralized internet.
             </p>
-            <p class="long-word-wrap-text">
-                RFOF is an RF Optical FuturisticPRdeepgoldAInanoparticleröntgensincevakuumperoetualmagnetismdeletricelectricspolymerquantumsymposialaserröntgenvisualisationsphysics
-            </p>
-            <p>
-                Besuchen Sie unsere Hauptseite: <a href="https://sites.google.com/view/rfof/startseite#h.wboa7gvhvkcb" target="_blank">RFOF Offizielle Website</a>
+            <p class="content-highlight">
+                Our vision extends to **RF Optical Futuristic PRdeepgoldAI Nanoparticle X-ray Science Vacuum Perpetual Magnetism Dielectric Electrics Polymer Quantum Symposia Laser X-ray Visualization Physics**. We aim to integrate these advanced concepts and technologies with every material's own time quanten synapses and neurological networks, powered by **AGCT Cells** for a truly revolutionary system.
             </p>
         </section>
 
-        <section>
-            <h2>Software-Informationen: Software.cw</h2>
-            <h3>RF-OF & PR AI Software Cold and Warm.NET System</h3>
+        <section id="vision-mission" class="text-section">
+            <h2 class="section-title">Vision & Mission</h2>
             <p>
-                Dies ist die Kernsoftware für das RFOF-Projekt, bekannt als "Cold & Warm.NET System", erfunden von @Satoramy-PRAI auf @github.
+                We are dedicated to building a future where technology serves the planet and humanity. Our projects focus on sustainable development, advanced AI integration, and the creation of a global decentralized ecosystem that promotes transparency, security, and individual freedom.
             </p>
-            <p>
-                Sie bildet die technologische Grundlage für die revolutionäre RFOF-Entwicklung.
+            <p class="content-highlight">
+                Through innovation and collaboration, Ready Four Our Future aims to empower individuals and communities to shape a better, more equitable world.
             </p>
         </section>
 
+        <section id="projects" class="text-section">
+            <h2 class="section-title">Key Projects</h2>
+            <ul>
+                <li>**RFOFSpiderWeb.NET:** The foundation for the new decentralized internet.</li>
+                <li>**PRAI-OS:** The operating system for our AI, enabling autonomous and perpetual functions.</li>
+                <li>**AXF Token (ABillity XP Fps Token):** The native token fueling our ecosystem, minted from recycled data remnants.</li>
+                <li>**Qubit Majorana & PZQQET Graffitation NexusLeap:** Core technologies for transforming data waste into genuine tokens.</li>
+            </ul>
+        </section>
+
+        <section id="technology" class="text-section">
+            <h2 class="section-title">Technological Foundation</h2>
+            <p>
+                Our platform integrates cutting-edge advancements in blockchain, AI, and quantum physics. We utilize a **BOx_toBOx Matrix Bridge** for seamless data flow and **Perpetuum mobile scalability** to ensure our network grows without limits.
+            </p>
+            <p class="content-highlight">
+                The entire system is designed to be self-sustaining and constantly evolving, driven by the principles of **PRAI PZQQET AXIOMATIKX**.
+            </p>
+        </section>
     </main>
 
     <div class="improve-page-container">
-        This site is open source. <a href="https://github.com/QCH-L-C/PRAI-KI-/edit/gh-pages/README.md" class="improve-page-link">Improve this page.</a>
+        <p>Suggestions for improvement? <a href="https://github.com/RFOF-NETWORK-Ready-for-our-future/RFOF-spider-NET-/edit/main/index.html" class="improve-page-link" target="_blank">Improve this page on GitHub!</a></p>
     </div>
 
     <footer>
-        <p>&copy; 2025 RFOF-NETWORK. Alle Rechte vorbehalten.</p>
+        <p>&copy; 2025 Ready Four Our Future. All rights reserved.</p>
+        <p class="mt-2">
+            <a href="https://github.com/RFOF-NETWORK-Ready-for-our-future" target="_blank">GitHub Profile</a> |
+            <a href="https://github.com/orgs/skills/discussions/categories/github-pages" target="_blank">Contact / Discussions</a> |
+            <a href="https://docs.github.com" target="_blank">GitHub Docs</a> |
+            <a href="https://github.com/explore" target="_blank">GitHub Explore</a> |
+            <a href="https://www.githubstatus.com/" target="_blank">System Status</a> |
+            <a href="https://www.contributor-covenant.org/version/2/1/code_of_conduct/code_of_conduct.md" target="_blank">Code of Conduct</a> |
+            <a href="https://gh.io/mit" target="_blank">MIT License</a> |
+            <a href="feed.xml" target="_blank">Subscribe via RSS Feed</a>
+        </p>
     </footer>
-    
+
     <script src="menu_script.js"></script>
+    <script>
+        // Smooth scrolling for internal links (from previous PRAI page)
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Basic Chart.js Placeholder (removed as charts not in this content)
+        // const createChart = ...
+
+        // Example of a simple type of content-specific script for this page
+        console.log("Ready Four Our Future page loaded!");
+    </script>
 </body>
 </html>

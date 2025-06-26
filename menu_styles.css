@@ -1,113 +1,132 @@
-/* Grundlegende Styles für Header und Menü */
-.navbar {
+/* Base styling for the main header and nav components */
+.main-header .navbar {
     display: flex;
     align-items: center;
+    margin-left: auto; /* Pushes the navbar to the right */
+    position: relative;
 }
 
-.nav-links {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex; /* Zeigt Links nebeneinander an auf großen Bildschirmen */
+/* Global Dropdown Container */
+.global-dropdown {
+    position: relative;
+    display: inline-block; /* Allows side-by-side with other elements */
+    margin-left: auto; /* Pushes it to the right within the navbar if other elements are present */
 }
 
-.nav-links li a {
-    color: #333;
-    text-decoration: none;
-    padding: 10px 15px;
-    display: block;
-    transition: background-color 0.3s ease;
-}
-
-.nav-links li a:hover {
-    background-color: #e0e0e0;
-}
-
-/* Hamburger-Icon (drei graue Striche) */
+/* Hamburger menu icon (for mobile) */
 .hamburger-icon {
-    display: none; /* Standardmäßig versteckt auf großen Bildschirmen */
+    display: none; /* Hidden by default on desktop */
     flex-direction: column;
     justify-content: space-around;
     width: 30px;
     height: 25px;
     cursor: pointer;
-    z-index: 1000;
+    z-index: 1001;
     margin-left: 20px;
 }
 
 .hamburger-icon .bar {
     width: 100%;
     height: 3px;
-    background-color: #aaa;
-    border-radius: 5px;
+    background-color: #0088cc; /* Telegram blue bars */
+    border-radius: 2px;
     transition: all 0.3s ease-in-out;
+    box-shadow: none;
 }
 
-/* Media Queries für responsive Design (wichtig für das Hamburger-Menü) */
-@media (max-width: 768px) { /* Wenn Bildschirm kleiner als 768px ist */
-    .nav-links {
-        display: none; /* Standardmäßig versteckt das gesamte Menü */
-        flex-direction: column;
+/* Global Nav Links (the actual dropdown content) */
+.nav-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex; /* Display as flex for desktop (horizontal) */
+}
+
+.nav-list li {
+    position: relative;
+}
+
+.nav-list li a {
+    color: #333333; /* Dark text color for menu items on white header */
+    text-decoration: none;
+    padding: 10px 15px;
+    display: block;
+    font-weight: bold;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.nav-list li a:hover {
+    background-color: rgba(0, 136, 204, 0.1); /* Subtle blue hover for white background */
+    color: #0088cc; /* Telegram blue on hover */
+}
+
+/* Mobile: Hamburger menu behavior */
+@media (max-width: 768px) {
+    .navbar {
         width: 100%;
-        background-color: #f4f4f4;
-        padding: 10px 0;
-        box-shadow: 0 5px 10px rgba(0,0,0,0.3);
-        z-index: 999;
+        justify-content: space-between;
     }
-
-    .nav-links.active {
-        display: flex; /* Menü anzeigen, wenn aktiv */
-    }
-
-    .nav-links li {
-        text-align: center;
-        margin: 10px 0;
+    .site-title { /* Text title, adjust for mobile if next to SVG */
+        font-size: 1.5em; /* Match site-title in mobile media query */
+        margin-right: auto;
+        padding-left: 0;
     }
 
     .hamburger-icon {
-        display: flex; /* Hamburger-Icon anzeigen auf kleinen Bildschirmen */
-        position: relative; /* Muss relativ sein, um vom Z-Index betroffen zu sein */
+        display: flex;
+        margin-left: 0;
     }
-    
-    /* Anpassung für die Positionierung des Menüs, wenn es aufgeklappt ist */
-    .nav-links {
-        position: fixed; /* Fixiert das Menü im Viewport */
+
+    .nav-list {
+        display: none;
+        flex-direction: column;
+        width: 280px;
+        position: fixed;
         top: 0;
         right: 0;
         height: 100%;
-        width: 250px;
-        background-color: #333;
-        flex-direction: column;
-        align-items: flex-start;
-        padding-top: 60px;
-        transform: translateX(100%); /* Zuerst komplett nach rechts verschieben (unsichtbar) */
+        background-color: #2d3748; /* Dark background for mobile menu */
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.4);
+        z-index: 1000;
+        transform: translateX(100%);
         transition: transform 0.3s ease-in-out;
-        z-index: 998; /* Unter dem Hamburger Icon */
+        padding-top: 60px;
+        border-left: 1px solid #4a5568;
     }
 
-    .nav-links.active {
-        transform: translateX(0); /* Menü einblenden */
+    .nav-list.active {
+        transform: translateX(0);
+        display: flex;
     }
 
-    .nav-links li a {
-        color: white;
-        width: 100%;
-        padding: 15px 20px;
+    .nav-list li {
+        margin: 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .nav-list li:last-child {
+        border-bottom: none;
+    }
+
+    .nav-list li a {
+        padding: 15px 25px;
         text-align: left;
+        color: #e2e8f0; /* Light text for mobile menu */
     }
 
-    .nav-links li a:hover {
-        background-color: #575757;
+    .nav-list li a:hover {
+        background-color: #4a5568;
+        color: #4299e1;
     }
-
+    
     .hamburger-icon.active {
-        position: fixed; /* Fixiert das Icon, wenn das Menü offen ist */
-        right: 20px; /* Positioniert es fest am rechten Rand */
-        z-index: 1001; /* Liegt über dem aufgeklappten Menü */
+        position: fixed;
+        right: 20px;
+        z-index: 1001;
     }
 }
 
-/* Animation für das Hamburger-Icon, wenn es aktiv ist */
+/* Hamburger icon animation for 'X' */
 .hamburger-icon.active .bar:nth-child(2) {
     opacity: 0;
 }
