@@ -1,0 +1,112 @@
+/*
+#================================================
+# MODUL-STIL: Einstellungs-Menü
+# FUNKTION: Definiert das visuelle Erscheinungsbild des Zahnrad-Buttons
+#           und des Vollbild-Dropdown-Menüs.
+#================================================
+*/
+
+.settings-gear-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1002;
+    padding: 5px;
+}
+
+.settings-gear-button svg {
+    width: 28px;
+    height: 28px;
+    fill: #6c757d;
+    transition: transform 0.5s ease, fill 0.3s ease;
+}
+
+.settings-gear-button:hover svg {
+    fill: #0088cc;
+    transform: rotate(90deg);
+}
+
+.settings-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(45, 55, 72, 0.95); /* --color-dark mit Transparenz */
+    z-index: 2000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.settings-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.settings-close-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 2.5em;
+    color: #e2e8f0;
+    line-height: 1;
+    padding: 0;
+}
+
+.settings-menu {
+    color: #e2e8f0;
+    width: 90%;
+    max-width: 600px;
+    text-align: left;
+}
+
+.settings-menu h2 {
+    font-family: 'Orbitron', sans-serif;
+    color: #63b3ed;
+    border-bottom-color: #4a5568;
+}
+
+.settings-item {
+    padding: 1rem 0;
+    border-bottom: 1px solid #4a5568;
+}
+
+.settings-item label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.settings-item span, .settings-item select {
+    font-family: 'Fira Code', monospace;
+    background-color: #4a5568;
+    padding: 8px;
+    border-radius: 4px;
+    color: #e2e8f0;
+    display: inline-block;
+}
+
+.settings-item select {
+    border: 1px solid #63b3ed;
+    cursor: pointer;
+}
+
+.user-token-info {
+    font-size: 0.9em;
+    color: #a0aec0;
+    margin-top: 0.5rem;
+}
+
+.user-token-info.unlocked {
+    color: #68d391; /* Grün für freigeschaltet */
+}
