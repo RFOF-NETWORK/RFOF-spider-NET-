@@ -2,11 +2,8 @@
 #================================================
 # TEIL 1: IHR URSPRÜNGLICHER, KANONISCHER CODE
 # FUNKTION: Definiert das grundlegende Design und Layout dieser Seite.
-# STATUS: 100% bewahrt und respektiert.
 #================================================
 */
-
-/* MANIFEST: Globale Stil- und Layout-Prinzipien */
 body {
     font-family: 'Roboto', sans-serif;
     background-color: #FFFFFF;
@@ -24,7 +21,6 @@ main {
     flex-grow: 1;
 }
 
-/* MANIFEST: "Rahmen" der Inhalte (konsistente max-width: 960px) */
 .header-content,
 .content-container,
 .footer-content {
@@ -36,7 +32,6 @@ main {
     box-sizing: border-box;
 }
 
-/* MANIFEST: Header Layout und Design */
 .main-header {
     background-color: #FFFFFF;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
@@ -67,7 +62,6 @@ main {
     text-overflow: ellipsis;
 }
 
-/* Allgemeine Inhaltsstile */
 .content-container {
     padding-top: 2rem;
     padding-bottom: 2rem;
@@ -84,27 +78,20 @@ main {
     padding-bottom: 0;
 }
 
-h2, h3, h4 {
+h2 {
     color: #0088cc;
     font-family: 'Orbitron', sans-serif;
+    font-size: 2.2em;
     margin-top: 1rem;
     margin-bottom: 1rem;
     padding-bottom: 0.5rem;
     border-bottom: 1px solid rgba(0, 136, 204, 0.3);
 }
-h2 { font-size: 2.2em; }
-h3 { font-size: 1.6em; }
-h4 { font-size: 1.3em; }
-
-p { margin-bottom: 1rem; }
-a { color: #0088cc; text-decoration: none; }
-a:hover { color: #00aaff; text-decoration: underline; }
 
 strong {
     color: #2b6cb0;
 }
 
-/* Footer */
 .main-footer {
     background-color: #2d3748;
     color: #e2e8f0;
@@ -115,18 +102,15 @@ strong {
     font-size: 0.9em;
 }
 .main-footer a { color: #63b3ed; }
-.main-footer a:hover { color: #90cdf4; }
 
-/* Responsive Anpassungen */
 @media (max-width: 768px) {
     .site-title { font-size: 1.5em; }
     h2 { font-size: 1.8em; }
-    h3 { font-size: 1.4em; }
 }
 
 /*
 #================================================
-# TEIL 2: ADDITIVE STILE FÜR DIE WALLET-RAPP (ZENITH)
+# TEIL 2: ADDITIVE STILE FÜR DIE WALLET-RAPP
 # FUNKTION: Definiert das Aussehen der neuen, interaktiven Wallet-Komponenten.
 #================================================
 */
@@ -162,12 +146,10 @@ strong {
     margin: 5px;
     transition: all 0.2s ease;
 }
-
 .wallet-connector button:hover {
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
-
 .wallet-connector button.primary {
     background: #0088cc;
     border-color: #0088cc;
@@ -181,8 +163,8 @@ strong {
 .wallet-dashboard h3 {
     font-size: 1.2em;
     border-bottom: none;
+    color: #333;
 }
-
 .wallet-dashboard h3 .hash-link {
     font-family: 'Fira Code', monospace;
     font-size: 0.8em;
@@ -236,9 +218,7 @@ strong {
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    transition: background-color 0.2s ease;
 }
-
 .wallet-actions button:hover {
     background-color: #343a40;
 }
@@ -269,5 +249,4 @@ strong {
     margin-top: 1.5rem;
     border: 2px dashed #ccc;
     border-radius: 8px;
-    background-color: #FFFFFF;
 }
