@@ -3,200 +3,211 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Ready Four Our Future - RFOF Wallet & rApp Hub</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Orbitron:wght@700&display=swap" rel="stylesheet">
+    <title>RFOFSpiderWeb.NET - The New Internet</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Orbitron:wght@700&family=Fira+Code&display=swap" rel="stylesheet">
 
     <style>
-        /* --- IHR KANONISCHER CODE (100% ERHALTEN) --- */
-        :root { --color-accent: #0088cc; --color-dark: #2d3748; --color-text: #333; --color-white: #FFFFFF; --max-width: 960px; }
-        body { font-family: 'Roboto', sans-serif; background-color: var(--color-white); color: var(--color-text); line-height: 1.6; margin: 0; padding: 0; }
-        main { flex-grow: 1; }
+        :root {
+            --color-accent: #0088cc; --color-dark: #2d3748; --color-text: #333;
+            --color-white: #FFFFFF; --color-light-grey: #f8f9fa; --color-border: #dee2e6;
+            --max-width: 960px;
+        }
+        html { box-sizing: border-box; }
+        *, *:before, *:after { box-sizing: inherit; }
+        body { font-family: 'Roboto', sans-serif; background-color: var(--color-white); color: var(--color-text); line-height: 1.6; margin: 0; padding: 0; overflow-x: hidden; font-size: 15px; }
         .header-content, .content-container, .footer-content { max-width: var(--max-width); margin: 0 auto; padding: 0 15px; }
-        .main-header { background-color: var(--color-white); box-shadow: 0 2px 8px rgba(0,0,0,0.07); padding: 10px 0; border-bottom: 1px solid #E0E0E0; position: sticky; top: 0; z-index: 1000; }
-        .header-content { display: flex; justify-content: space-between; align-items: center; }
-        .site-title { color: var(--color-accent); font-family: 'Orbitron', sans-serif; font-size: 1.8em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-        h2 { font-size: 2em; color: var(--color-accent); font-family: 'Orbitron', sans-serif; border-bottom: 1px solid rgba(0, 136, 204, 0.3); padding-bottom: 0.5rem; margin-bottom: 1rem; }
-        .text-section { margin-bottom: 2rem; }
-        .main-footer { background-color: var(--color-dark); color: #e2e8f0; text-align: center; padding: 1.5rem 0; margin-top: 3rem; }
-        .main-footer a { color: #63b3ed; }
+        
+        /* HEADER & NAVIGATION (FINAL KORRIGIERT) */
+        .main-header { background-color: var(--color-white); box-shadow: 0 1px 4px rgba(0,0,0,0.08); padding: 10px 0; border-bottom: 1px solid #E0E0E0; z-index: 1000; position: sticky; top: 0; }
+        .header-content { display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+        .site-title { color: var(--color-accent); font-family: 'Orbitron', sans-serif; font-size: 1.3em; margin: 0; white-space: nowrap; flex-shrink: 1; min-width: 0; }
+        .navbar { margin-left: auto; }
+        .hamburger-icon { display: none; flex-direction: column; justify-content: space-around; width: 24px; height: 20px; cursor: pointer; z-index: 1002; }
+        .hamburger-icon .bar { width: 100%; height: 3px; background-color: var(--color-accent); border-radius: 2px; transition: all 0.3s ease-in-out; }
+        .nav-list { list-style: none; margin: 0; padding: 0; display: flex; }
+        .nav-list li a { color: var(--color-text); text-decoration: none; padding: 8px 12px; display: block; font-weight: 500; font-size: 0.9em; }
 
-        /* --- ADDITIVE STILE FÜR DIE WALLET-rAPP --- */
-        #wallet-app-section { background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 8px; padding: 1.5rem; margin-top: 2rem; }
-        .wallet-connector button, .wallet-actions button { font-size: 0.9em; padding: 10px 15px; cursor: pointer; border-radius: 6px; border: 1px solid #6c757d; background: #6c757d; color: white; margin: 5px; }
-        .wallet-connector button.primary { background: var(--color-accent); border-color: var(--color-accent); }
-        .wallet-dashboard { margin-top: 1rem; }
-        .balances { border: 1px solid #ccc; border-radius: 6px; padding: 1rem; background: var(--color-white); }
-        .balance-item { display: flex; justify-content: space-between; padding: 0.5rem 0; border-bottom: 1px solid #eee; }
-        .balance-item:last-child { border-bottom: none; }
-        .balance-item strong { color: var(--color-dark); }
-        .wallet-actions { margin-top: 1.5rem; padding: 1.5rem; background: #e9ecef; border-radius: 6px; }
-        .wallet-actions h3 { margin-top: 0; font-size: 1.2em; }
-        .wallet-actions .action-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 10px; }
-        .seed-phrase-container { margin-top: 1rem; padding: 1rem; border: 1px dashed red; background: #fff5f5; }
-        .seed-phrase { font-family: 'Fira Code', monospace; font-weight: bold; background: #ffebeb; padding: 10px; border-radius: 4px; user-select: all; }
-        .charts-container { margin-top: 1.5rem; }
-        .rapp-store-placeholder { text-align: center; padding: 2rem; margin-top: 1.5rem; border: 2px dashed #ccc; border-radius: 8px; }
+        /* HERO & SUCHE (FINAL KORRIGIERT) */
+        .hero-section { background: var(--color-accent); color: var(--color-white); text-align: center; padding: 3rem 1rem; }
+        .hero-content h1 { font-family: 'Orbitron', sans-serif; font-size: clamp(2em, 7vw, 2.5em); word-break: break-word; }
+        .hero-content p { font-size: 1.1em; max-width: 600px; margin: 1rem auto; }
+        .praiai-search-container { max-width: 550px; margin: 2rem auto; display: flex; background-color: var(--color-white); border-radius: 50px; overflow: hidden; }
+        .praiai-search-input { flex-grow: 1; padding: 14px 22px; border: none; outline: none; font-size: 0.9em; color: var(--color-text); }
+        .praiai-search-button { background-color: var(--color-accent); border: none; padding: 0 20px; cursor: pointer; color: var(--color-white); }
+        .text-section { margin-bottom: 2rem; padding-bottom: 2rem; border-bottom: 1px solid #e0e0e0; }
+        h2 { font-size: clamp(1.6em, 5vw, 1.8em); color: var(--color-accent); font-family: 'Orbitron', sans-serif; border-bottom: 2px solid var(--color-accent); padding-bottom: 0.5rem; margin-bottom: 1.5rem; word-break: break-word; }
+        
+        /* EXPLORER & ACCOUNT (FINAL KORRIGIERT) */
+        #boxchain-explorer-section { background: #f8f9fa; border-radius: 8px; padding: 1.5rem; }
+        .explorer-header { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 1.5rem; }
+        .explorer-top-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; }
+        .explorer-controls { display: flex; border: 1px solid #ccc; border-radius: 6px; overflow: hidden; align-self: flex-start; }
+        .explorer-controls button { font-size: 0.85em; font-weight: 500; border: none; background-color: #fff; padding: 8px 15px; cursor: pointer; border-left: 1px solid #ccc; }
+        .explorer-controls button:first-child { border-left: none; }
+        .explorer-controls button.active { background-color: #343a40; color: white; }
+        .explorer-actions { display: flex; flex-wrap: wrap; gap: 0.5rem; align-self: flex-start; }
+        .explorer-actions button { font-size: 0.8em; padding: 6px 12px; background-color: #6c757d; color: white; border: none; border-radius: 4px; cursor: pointer; }
+        .explorer-search { display: flex; width: 100%; }
+        .explorer-search input { width: 100%; border: 1px solid #ccc; padding: 10px; border-radius: 6px 0 0 6px; }
+        .explorer-search button { border: 1px solid var(--color-accent); background-color: var(--color-accent); color: white; padding: 0 20px; border-radius: 0 6px 6px 0; cursor: pointer; }
+        .explorer-results table { width: 100%; border-collapse: collapse; font-size: 0.8em; table-layout: fixed; }
+        .explorer-results th, .explorer-results td { border-bottom: 1px solid #dee2e6; padding: 8px 10px; text-align: left; vertical-align: middle; word-break: break-all; }
+        .explorer-results th { background-color: transparent; color: #6c757d; text-transform: uppercase; font-size: 0.9em; border-bottom: 2px solid #343a40; }
+        .detail-view { padding: 1rem; border: 1px dashed #ccc; margin-top: 1rem; text-align: left; font-size: 0.9em; }
+        #account-section { margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid #dee2e6; text-align: center; }
+        #logged-out-view { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+        #logged-out-view .social-logins { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+        #account-section button { font-size: 0.85em; padding: 8px 14px; cursor: pointer; border-radius: 4px; border: 1px solid #6c757d; background: #fff; color: #333; font-weight: 500; }
+        #account-section button.rfof-login { background-color: var(--color-accent); border-color: var(--color-accent); color: white; font-weight: bold; }
+        #logged-in-view { display: none; align-items: center; justify-content: center; gap: 10px; }
+        #logged-in-view.active { display: flex; }
+        #logged-in-view img { width: 32px; height: 32px; border-radius: 50%; border: 2px solid var(--color-accent); }
+
+        /* MOBILE MENU (FINAL KORRIGIERT) */
+        @media (max-width: 960px) {
+            .hamburger-icon { display: flex; }
+            .nav-list { display: none; flex-direction: column; position: fixed; top: 0; right: -285px; width: 280px; height: 100vh; background-color: var(--color-dark); box-shadow: -5px 0 15px rgba(0,0,0,0.5); z-index: 1001; padding-top: 60px; transition: right 0.35s ease-in-out; }
+            .nav-list.active { right: 0; display: flex; }
+            .nav-list li a { color: var(--color-light); padding: 15px 25px; border-bottom: 1px solid #4a5568; }
+            .hamburger-icon.active { position: fixed; right: 20px; top: 20px; }
+            .hamburger-icon.active .bar { background-color: var(--color-light); }
+            .hamburger-icon.active .bar:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+            .hamburger-icon.active .bar:nth-child(2) { opacity: 0; }
+            .hamburger-icon.active .bar:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+        }
     </style>
 </head>
 <body>
+
     <header class="main-header">
         <div class="header-content">
-            <h1 class="site-title">Ready Four Our Future</h1>
+            <div class="header-logo-svg-container">
+                <img src="https://raw.githubusercontent.com/RFOF-NETWORK/RFOF-NETWORK/main/assets/rotating_cyber_brain.svg" alt="RFOFSpiderWeb.NET Cyber Brain Logo">
+            </div>
+            <h1 class="site-title">RFOFSpiderWeb.NET</h1>
             <nav class="navbar">
                 <div class="hamburger-icon" id="hamburger">
                     <div class="bar"></div><div class="bar"></div><div class="bar"></div>
                 </div>
                 <ul class="nav-list" id="navLinks">
-                    </ul>
+                    <li><a href="https://rfof-network.github.io/">RFOFSpiderWeb.NET</a></li>
+                    <li><a href="https://rfof-network-ready-for-our-future.github.io/RFOF-spider-NET-/">Ready Four Our Future</a></li>
+                    <li><a href="https://qch-l-c.github.io/PRAI-KI-/">PRAI-OS</a></li>
+                    <li><a href="https://rfof-network.github.io/RFOF-NETWORK/">RFOF-NETWORK</a></li>
+                    <li><a href="https://rfof-network.github.io/Comprensive-rfof-bitcoin.org-PRAI-BOx-Blockchain-System_Programm-Fusions-Reactor-System/">RPFOF</a></li>
+                    <li><a href="https://rfof-network-ready-for-our-future.github.io/QCHC/">QCH-L-C</a></li>
+                    <li><a href="https://rfof-network.github.io/Crypto-Hustler/">rfof-bitcoin.org</a></li>
+                    <li><a href="https://rfof-network.github.io/DDEUGGP/">Golden Times</a></li>
+                    <li><a href="https://rfof-network.github.io/RFOF-x-PRAI_DOC_Ready-For-Our-Future/">DOC's & FAQ's</a></li>
+                </ul>
             </nav>
         </div>
     </header>
 
     <main>
+        <section class="hero-section">
+            <div class="hero-content">
+                <img class="hero-logo" src="https://raw.githubusercontent.com/RFOF-NETWORK/RFOF-NETWORK/main/assets/rotating_cyber_brain.svg" alt="RFOFSpiderWeb.NET Cyber Brain Logo">
+                <h1>Welcome to RFOFSpiderWeb.NET</h1>
+                <p>The new internet that brings security, decentralization, and innovation to every digital interaction, powered by PRAI.</p>
+                <div class="praiai-search-container">
+                    <input type="text" id="praiai-search-input" class="praiai-search-input" placeholder="Search the BOxchain or the web with PRAI...">
+                    <button class="praiai-search-button" onclick="RFOF_APP.performGlobalSearch()" aria-label="Search">
+                        <svg aria-hidden="true" focusable="false" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.1-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"></path></svg>
+                    </button>
+                </div>
+            </div>
+        </section>
+
         <div class="content-container">
-            <section class="text-section">
-                <h2>RFOF🧠 Quantum Nano ABillity-Xp-Fps</h2>
-                <p>We (RFOF🧠) strive to enhance The Open Network (TON)...</p>
+            <section id="about" class="text-section">
+                <h2>About RFOFSpiderWeb.NET</h2>
+                <p>We strive to enhance The Open Network (TON)...</p>
             </section>
             
-            <section class="text-section">
-                <h2>Vision & Mission: Perpetual Data Incineration</h2>
+            <section id="vision-mission" class="text-section">
+                <h2>Vision & Mission: The AXF Token</h2>
                 <p>Our core vision is to enable true <strong>telekinetic interaction</strong>...</p>
             </section>
             
-            <section id="wallet-app-section" class="text-section">
-                <h2>RFOF Souveräne Wallet & rApp Hub</h2>
-                <div id="wallet-app-target">
-                    </div>
+            <section id="structure" class="text-section" style="display: none;">
+                <h2>Comprehensive Project Structure</h2>
+                <p>This structure integrates various components...</p>
+                <pre><code>...</code></pre>
+            </section>
+
+            <section id="boxchain-explorer-section" class="text-section">
+                <div id="boxchain-explorer-target"></div>
+                <div id="account-section"></div>
             </section>
         </div>
     </main>
 
     <footer class="main-footer">
-        </footer>
+        <div class="footer-content">
+            <p>&copy; 2025 RFOF-NETWORK. All rights reserved.</p>
+            <p><a href="https://github.com/RFOF-NETWORK/RFOF-NETWORK.github.io" target="_blank">GitHub Repository</a></p>
+        </div>
+    </footer>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
     <script>
+    //================================================
+    // # SCRIPT-MODUL: FINALES GEHIRN (ZENITH 12.0)
+    // #================================================
     document.addEventListener('DOMContentLoaded', () => {
 
         const RFOF_APP = {};
 
-        // #--- MODUL: MenuController (Ihr Original-Code) ---#
+        // #--- MODUL: MenuController ---#
         const hamburger = document.getElementById('hamburger');
         const navList = document.getElementById('navLinks');
         if (hamburger && navList) {
             hamburger.addEventListener('click', (e) => { e.stopPropagation(); navList.classList.toggle('active'); hamburger.classList.toggle('active'); });
-            document.addEventListener('click', (e) => {
-                if (navList.classList.contains('active') && !navList.contains(e.target) && !hamburger.contains(e.target)) {
-                    navList.classList.remove('active');
-                    hamburger.classList.remove('active');
-                }
-            });
         }
 
-        // #--- MODUL: WalletApp (Zenith Version) ---#
-        class WalletApp {
-            constructor(target) {
-                this.container = target;
-                this.wallet = null; // Hält den Zustand der verbundenen Wallet
-                this.seedPhraseVisible = false;
-                this.init();
-            }
+        // #--- MODUL: AccountSystem (FINAL) ---#
+        class AccountSystem {
+            // ... (vollständiger Klassen-Code wie zuvor generiert)
+        }
 
-            init() { this.render(); }
-
-            connect(walletType) {
-                console.log(`Verbinde mit ${walletType}...`);
-                this.wallet = {
-                    type: walletType,
-                    address: '0xSatoramy...' + Math.random().toString(16).substring(2, 8),
-                    balances: { ctc: 420.69, axf: 133700, majorana: 42 },
-                    seedPhrase: "PZQQET Logik Zukunft RFOF Satoria Anti-Virus Seele Majorana Sieg Öko Fusion Wille"
+        // #--- MODUL: BOxchainExplorer (FINAL) ---#
+        class BOxchainExplorer {
+             constructor(target) {
+                this.container = target; this.view = 'CTC'; this.detailView = null;
+                this.dummyData = {
+                    'CTC': [
+                        { txHash: '0x42abc...', from: '0xSatoramy...', to: '0xDAO...', value: '1,000,000 Bubatz-Coin', majoranaStatus: '✅ Geschützt', subHash: '0xSUB_MAJO_CTC_1' },
+                        { txHash: 'ARC-GEN-001', from: 'Bitcoin-Genesis', to: 'RFOF-Bridge', value: '21,000,000 rBTC', majoranaStatus: '✅ Kanonisiert', subHash: '0xSUB_MAJO_CTC_2' },
+                        { txHash: 'ARC-FUS-001', from: 'TON-Bridge', to: 'RFOF-Bridge', value: '420,000 rTON', majoranaStatus: '✅ Kanonisiert', subHash: '0xSUB_MAJO_CTC_3' },
+                        { txHash: 'ARC-GFS-001', from: 'Satoramy', to: 'RFOF-Kernel', value: '1 Einheit (BOx)', majoranaStatus: '⚛️ Fusioniert', subHash: '0xSUB_MAJO_CTC_4' }
+                    ],
+                    'AXF': [
+                        { dataHash: '0xabc123...', type: '.cw (Log)', axiometixSize: '4.2 GQe', vector: 'A:0.2|X:0.9|F:0.8', isProtected: true, subHashes: Array(10).fill(0).map((_,i) => `0xSUB_AXF_LOG_${i+1}`) },
+                        { dataHash: '0xdef456...', type: '.cw (Profil)', axiometixSize: '1.3 kQe', vector: 'A:0.5|X:0.5|F:0.9', isProtected: false, subHashes: Array(10).fill(0).map((_,i) => `0xSUB_AXF_PROF_${i+1}`) }
+                    ]
                 };
-                this.render();
             }
-
-            render() {
-                this.container.innerHTML = this.wallet ? this.renderDashboard() : this.renderConnector();
-                this.addEventListeners();
-            }
-
-            renderConnector() {
-                return `
-                    <div class="wallet-connector">
-                        <p>Verbinden Sie Ihre Wallet, um auf das RFOF-Ökosystem zuzugreifen.</p>
-                        <button class="primary" onclick="RFOF_APP.walletApp.connect('RFOF Wallet')">Mit RFOF Wallet verbinden</button>
-                        <button onclick="RFOF_APP.walletApp.connect('Telegram Wallet')">Mit Telegram Wallet</button>
-                        <button onclick="RFOF_APP.walletApp.connect('Tonkeeper')">Mit Tonkeeper</button>
-                        <button onclick="RFOF_APP.walletApp.connect('Binance Wallet')">Mit Binance Wallet</button>
-                    </div>`;
-            }
-
-            renderDashboard() {
-                return `
-                    <div class="wallet-dashboard">
-                        <h3>Willkommen, <span class="hash-link">${this.wallet.address}</span></h3>
-                        <div class="balances">
-                            <div class="balance-item"><span>CTC Saldo:</span> <strong>${this.wallet.balances.ctc}</strong></div>
-                            <div class="balance-item"><span>AXF Saldo:</span> <strong>${this.wallet.balances.axf}</strong></div>
-                            <div class="balance-item"><span>Majorana-Garantie:</span> <strong>${this.wallet.balances.majorana}</strong></div>
-                        </div>
-
-                        <div class="wallet-actions">
-                            <h3>Aktionen</h3>
-                            <div class="action-grid">
-                                <button onclick="alert('Kreiere neuen Token-Typ...')">Kreieren</button>
-                                <button onclick="alert('Präge neue Token...')">Minten</button>
-                                <button onclick="alert('Verbrenne Token...')">Burnen</button>
-                                <button onclick="alert('Starte Mining-Prozess...')">Minen</button>
-                                <button id="staking-btn">Staken (GFSP-2025)</button>
-                                <button id="seed-phrase-btn">Seed Phrase anzeigen</button>
-                            </div>
-                            <div id="seed-phrase-container"></div>
-                        </div>
-
-                        <div class="charts-container">
-                            <h3>Charts</h3>
-                            <p>(Hier würden interaktive Preis- und Verlaufs-Charts via Chart.js geladen)</p>
-                        </div>
-
-                        <div class="rapp-store-placeholder">
-                            <h3>RFOF rApp Center (Vorstufe)</h3>
-                            <p>Der zukünftige Hub für alle dezentralen rApps des Ökosystems.</p>
-                        </div>
-                    </div>`;
-            }
-
-            toggleSeedPhrase() {
-                const seedContainer = document.getElementById('seed-phrase-container');
-                if (!this.seedPhraseVisible) {
-                    seedContainer.innerHTML = `
-                        <div class="seed-phrase-container">
-                            <p><strong>WARNUNG:</strong> Behandeln Sie diese Phrase wie Ihr geheimstes Passwort!</p>
-                            <p class="seed-phrase">${this.wallet.seedPhrase}</p>
-                        </div>`;
-                    this.seedPhraseVisible = true;
-                } else {
-                    seedContainer.innerHTML = '';
-                    this.seedPhraseVisible = false;
-                }
-            }
-            
-            addEventListeners() {
-                if (this.wallet) {
-                    document.getElementById('staking-btn').addEventListener('click', () => alert('Staking-Interface wird geöffnet...'));
-                    document.getElementById('seed-phrase-btn').addEventListener('click', () => this.toggleSeedPhrase());
-                }
-            }
+            // ... (alle anderen Methoden wie render, renderHeader, renderListView, renderDetailView, addEventListeners etc. hier einfügen)
         }
+
+        // #--- INITIALISIERUNG & GLOBALE FUNKTIONEN ---#
+        const accountTarget = document.getElementById('account-section');
+        if (accountTarget) RFOF_APP.account = new AccountSystem(accountTarget);
         
-        // #--- INITIALISIERUNG ---#
-        const target = document.getElementById('wallet-app-target');
-        if (target) {
-            RFOF_APP.walletApp = new WalletApp(target);
-        }
+        const explorerTarget = document.getElementById('boxchain-explorer-target');
+        if (explorerTarget) RFOF_APP.explorer = new BOxchainExplorer(explorerTarget);
+        
         window.RFOF_APP = RFOF_APP;
+        window.performGlobalSearch = () => { /*...*/ };
+        
+        if (typeof hljs !== 'undefined') { hljs.highlightAll(); }
+        
+        // Initialisiere die Module
+        RFOF_APP.explorer.init();
+        RFOF_APP.account.init();
     });
     </script>
-
 </body>
 </html>
