@@ -1,4 +1,10 @@
-/* MANIFEST: Dropdown-Menü (Globale Navigation) - STANDARDISIERT */
+/*
+#================================================
+# STIL-MODUL: Globale Navigation (Hamburger-Menü)
+# FUNKTION: Definiert das Aussehen und das responsive Verhalten des Hauptmenüs.
+# STATUS: Kanonisch, unverändert.
+#================================================
+*/
 
 .navbar {
     display: flex;
@@ -101,7 +107,13 @@
     }
 
     /* Hamburger "X" Animation */
-    .hamburger-icon.active .bar:nth-child(2) { opacity: 0; }
-    .hamburger-icon.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
-    .hamburger-icon.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+    .hamburger-icon.active .bar:nth-child(2) { 
+        opacity: 0;
+    }
+    .hamburger-icon.active .bar:nth-child(1) { 
+        transform: translateY(8px) rotate(45deg); 
+    }
+    .hamburger-icon.active .bar:nth-child(3) { 
+        transform: translateY(-8px) rotate(-45deg); 
+    }
 }
