@@ -1,0 +1,77 @@
+/*
+#================================================
+# MODUL-STIL: Souveränes Benutzerprofil
+# FUNKTION: Definiert das visuelle Erscheinungsbild des Profil-Moduls.
+#================================================
+*/
+
+.profile-container {
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.profile-header .profile-picture {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 3px solid #0088cc;
+    object-fit: cover;
+    margin-bottom: 1rem;
+}
+
+.profile-username {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #2d3748;
+    margin-bottom: 0.5rem;
+}
+
+.profile-username span, .profile-email span {
+    cursor: pointer;
+    border-bottom: 2px dashed transparent;
+    transition: border-color 0.2s ease;
+}
+
+.profile-username span:hover, .profile-email span:hover {
+    border-bottom-color: #0088cc;
+}
+
+.profile-username input {
+    font-size: 1em;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.profile-username button {
+    font-size: 0.8em;
+    padding: 8px 12px;
+    margin-left: 5px;
+    cursor: pointer;
+    background-color: #0088cc;
+    color: white;
+    border: none;
+    border-radius: 4px;
+}
+
+.profile-email {
+    color: #6c757d;
+    font-size: 0.9em;
+    margin-bottom: 1rem;
+}
+
+.profile-address {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.8em;
+    color: #6c757d;
+    background-color: #f8f9fa;
+    padding: 8px;
+    border-radius: 4px;
+    word-break: break-all;
+}
