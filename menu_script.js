@@ -1,4 +1,9 @@
-// MANIFEST: Nur Menü-Logik, da keine Suche auf dieser Seite vorhanden ist.
+#================================================
+# MODUL: Globale Navigation - Logik
+# FUNKTION: Steuert das Öffnen und Schließen des mobilen Hamburger-Menüs.
+# STATUS: Kanonisch, unverändert.
+#================================================
+
 document.addEventListener('DOMContentLoaded', () => {
     const hamburger = document.getElementById('hamburger');
     const navList = document.getElementById('navLinks');
