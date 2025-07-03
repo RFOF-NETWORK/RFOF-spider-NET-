@@ -4,41 +4,67 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Ready Four Our Future - RFOF Wallet & rApp Hub</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Orbitron:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Orbitron:wght@700&family=Fira+Code&display=swap" rel="stylesheet">
 
     <style>
         /* --- IHR KANONISCHER CODE (100% ERHALTEN) --- */
         :root { --color-accent: #0088cc; --color-dark: #2d3748; --color-text: #333; --color-white: #FFFFFF; --max-width: 960px; }
-        body { font-family: 'Roboto', sans-serif; background-color: var(--color-white); color: var(--color-text); line-height: 1.6; margin: 0; padding: 0; }
+        body { font-family: 'Roboto', sans-serif; background-color: var(--color-white); color: var(--color-text); line-height: 1.6; margin: 0; padding: 0; min-height: 100vh; display: flex; flex-direction: column; }
         main { flex-grow: 1; }
-        .header-content, .content-container, .footer-content { max-width: var(--max-width); margin: 0 auto; padding: 0 15px; }
+        .header-content, .content-container, .footer-content { max-width: var(--max-width); margin: 0 auto; padding: 0 15px; box-sizing: border-box; }
         .main-header { background-color: var(--color-white); box-shadow: 0 2px 8px rgba(0,0,0,0.07); padding: 10px 0; border-bottom: 1px solid #E0E0E0; position: sticky; top: 0; z-index: 1000; }
         .header-content { display: flex; justify-content: space-between; align-items: center; }
         .site-title { color: var(--color-accent); font-family: 'Orbitron', sans-serif; font-size: 1.8em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
         h2 { font-size: 2em; color: var(--color-accent); font-family: 'Orbitron', sans-serif; border-bottom: 1px solid rgba(0, 136, 204, 0.3); padding-bottom: 0.5rem; margin-bottom: 1rem; }
-        .text-section { margin-bottom: 2rem; }
+        .text-section { margin-bottom: 2rem; padding-bottom: 2rem; border-bottom: 1px solid #e0e0e0; }
+        .text-section:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+        strong { color: #2b6cb0; }
         .main-footer { background-color: var(--color-dark); color: #e2e8f0; text-align: center; padding: 1.5rem 0; margin-top: 3rem; }
         .main-footer a { color: #63b3ed; }
+        
+        /* IHR KANONISCHES MENÜ-STYLING */
+        .navbar { display: flex; align-items: center; margin-left: auto; }
+        .hamburger-icon { display: none; flex-direction: column; justify-content: space-around; width: 28px; height: 24px; cursor: pointer; z-index: 1001; }
+        .hamburger-icon .bar { width: 100%; height: 3px; background-color: var(--color-accent); border-radius: 2px; transition: all 0.3s ease-in-out; }
+        .nav-list { list-style: none; margin: 0; padding: 0; display: flex; }
+        .nav-list li a { color: var(--color-text); text-decoration: none; padding: 10px 15px; display: block; font-weight: 500; font-size: 0.95em; }
 
-        /* --- ADDITIVE STILE FÜR DIE WALLET-rAPP --- */
+        @media (max-width: 900px) {
+            .hamburger-icon { display: flex; }
+            .nav-list { display: none; flex-direction: column; width: 280px; position: fixed; top: 0; right: -280px; height: 100%; background-color: var(--color-dark); box-shadow: -5px 0 15px rgba(0,0,0,0.4); z-index: 1000; transition: right 0.3s ease-in-out; padding-top: 60px; }
+            .nav-list.active { right: 0; display: flex; }
+            .nav-list li { width: 100%; border-bottom: 1px solid #4a5568; }
+            .nav-list li a { color: #e2e8f0; font-weight: bold; }
+            .hamburger-icon.active { position: fixed; right: 20px; top: 22px; }
+            .hamburger-icon.active .bar { background-color: #e2e8f0; }
+            .hamburger-icon.active .bar:nth-child(2) { opacity: 0; }
+            .hamburger-icon.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+            .hamburger-icon.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+        }
+        
+        /* --- ADDITIVE STILE FÜR DIE WALLET-rAPP (ZENITH) --- */
         #wallet-app-section { background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 8px; padding: 1.5rem; margin-top: 2rem; }
-        .wallet-connector button, .wallet-actions button { font-size: 0.9em; padding: 10px 15px; cursor: pointer; border-radius: 6px; border: 1px solid #6c757d; background: #6c757d; color: white; margin: 5px; }
+        #wallet-app-section h2 { font-size: 1.6em; }
+        .wallet-connector { text-align: center; padding: 1rem; }
+        .wallet-connector p { font-size: 1.1em; margin-bottom: 1.5rem; }
+        .wallet-connector button { font-size: 0.9em; padding: 10px 15px; cursor: pointer; border-radius: 6px; border: 1px solid #6c757d; background: #6c757d; color: white; margin: 5px; }
         .wallet-connector button.primary { background: var(--color-accent); border-color: var(--color-accent); }
         .wallet-dashboard { margin-top: 1rem; }
+        .wallet-dashboard h3 { font-size: 1.2em; border-bottom: none; }
         .balances { border: 1px solid #ccc; border-radius: 6px; padding: 1rem; background: var(--color-white); }
-        .balance-item { display: flex; justify-content: space-between; padding: 0.5rem 0; border-bottom: 1px solid #eee; }
+        .balance-item { display: flex; justify-content: space-between; padding: 0.5rem 0; border-bottom: 1px solid #eee; font-size: 1.05em; }
         .balance-item:last-child { border-bottom: none; }
-        .balance-item strong { color: var(--color-dark); }
+        .balance-item strong { font-family: 'Fira Code', monospace; color: var(--color-dark); }
         .wallet-actions { margin-top: 1.5rem; padding: 1.5rem; background: #e9ecef; border-radius: 6px; }
-        .wallet-actions h3 { margin-top: 0; font-size: 1.2em; }
-        .wallet-actions .action-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 10px; }
-        .seed-phrase-container { margin-top: 1rem; padding: 1rem; border: 1px dashed red; background: #fff5f5; }
-        .seed-phrase { font-family: 'Fira Code', monospace; font-weight: bold; background: #ffebeb; padding: 10px; border-radius: 4px; user-select: all; }
-        .charts-container { margin-top: 1.5rem; }
-        .rapp-store-placeholder { text-align: center; padding: 2rem; margin-top: 1.5rem; border: 2px dashed #ccc; border-radius: 8px; }
+        .wallet-actions .action-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 10px; margin-top: 1rem; }
+        .wallet-actions button { font-size: 0.9em; }
+        .seed-phrase-container { margin-top: 1rem; padding: 1rem; border: 1px dashed red; background: #fff5f5; border-radius: 4px; }
+        .seed-phrase { font-family: 'Fira Code', monospace; background: #ffebeb; padding: 10px; user-select: all; text-align: center; }
+        .charts-container, .rapp-store-placeholder { text-align: center; padding: 2rem; margin-top: 1.5rem; border: 2px dashed #ccc; border-radius: 8px; }
     </style>
 </head>
 <body>
+
     <header class="main-header">
         <div class="header-content">
             <h1 class="site-title">Ready Four Our Future</h1>
@@ -47,7 +73,16 @@
                     <div class="bar"></div><div class="bar"></div><div class="bar"></div>
                 </div>
                 <ul class="nav-list" id="navLinks">
-                    </ul>
+                    <li><a href="https://rfof-network.github.io/">RFOFSpiderWeb.NET</a></li>
+                    <li><a href="https://rfof-network-ready-for-our-future.github.io/RFOF-spider-NET-/">Ready Four Our Future</a></li>
+                    <li><a href="https://qch-l-c.github.io/PRAI-KI-/">PRAI-OS</a></li>
+                    <li><a href="https://rfof-network.github.io/RFOF-NETWORK/">RFOF-NETWORK</a></li>
+                    <li><a href="https://rfof-network.github.io/Comprensive-rfof-bitcoin.org-PRAI-BOx-Blockchain-System_Programm-Fusions-Reactor-System/">RPFOF</a></li>
+                    <li><a href="https://rfof-network-ready-for-our-future.github.io/QCHC/">QCH-L-C</a></li>
+                    <li><a href="https://rfof-network.github.io/Crypto-Hustler/">rfof-bitcoin.org</a></li>
+                    <li><a href="https://rfof-network.github.io/DDEUGGP/">Golden Times</a></li>
+                    <li><a href="https://rfof-network.github.io/RFOF-x-PRAI_DOC_Ready-For-Our-Future/">DOC's & FAQ's</a></li>
+                </ul>
             </nav>
         </div>
     </header>
@@ -56,14 +91,14 @@
         <div class="content-container">
             <section class="text-section">
                 <h2>RFOF🧠 Quantum Nano ABillity-Xp-Fps</h2>
-                <p>We (RFOF🧠) strive to enhance The Open Network (TON)...</p>
+                <p>We (RFOF🧠) strive to enhance The Open Network (TON) and foster the growth of games and capital, enabling TON to draw energy from all other decentralized Chains or Networks 💎👾🤝. Our aim is to win the Telegram Blockchain Contest, with missions focused on Bridging our RFOF NETWORK to serve as an extension of the TON Chain. Let's grow🌱🏆!</p>
             </section>
             
             <section class="text-section">
                 <h2>Vision & Mission: Perpetual Data Incineration</h2>
-                <p>Our core vision is to enable true <strong>telekinetic interaction</strong>...</p>
+                <p>Our core vision is to enable true <strong>telekinetic interaction</strong> via <strong>PRAI PZQQET AXIOMATIKX</strong>...</p>
             </section>
-            
+
             <section id="wallet-app-section" class="text-section">
                 <h2>RFOF Souveräne Wallet & rApp Hub</h2>
                 <div id="wallet-app-target">
@@ -73,7 +108,11 @@
     </main>
 
     <footer class="main-footer">
-        </footer>
+        <div class="footer-content">
+            <p>&copy; 2025 RFOF-NETWORK. All rights reserved.</p>
+            <p><a href="https://github.com/RFOF-NETWORK-Ready-for-our-future/RFOF-spider-NET-" target="_blank">GitHub Repository</a></p>
+        </div>
+    </footer>
 
     <script>
     document.addEventListener('DOMContentLoaded', () => {
@@ -97,7 +136,7 @@
         class WalletApp {
             constructor(target) {
                 this.container = target;
-                this.wallet = null; // Hält den Zustand der verbundenen Wallet
+                this.wallet = null;
                 this.seedPhraseVisible = false;
                 this.init();
             }
@@ -105,11 +144,10 @@
             init() { this.render(); }
 
             connect(walletType) {
-                console.log(`Verbinde mit ${walletType}...`);
                 this.wallet = {
                     type: walletType,
-                    address: '0xSatoramy...' + Math.random().toString(16).substring(2, 8),
-                    balances: { ctc: 420.69, axf: 133700, majorana: 42 },
+                    address: '0xSatoramy...' + Math.random().toString(16).substring(2, 10),
+                    balances: { ctc: 420.69, axf: 1337000, majorana: 42 },
                     seedPhrase: "PZQQET Logik Zukunft RFOF Satoria Anti-Virus Seele Majorana Sieg Öko Fusion Wille"
                 };
                 this.render();
@@ -136,9 +174,9 @@
                     <div class="wallet-dashboard">
                         <h3>Willkommen, <span class="hash-link">${this.wallet.address}</span></h3>
                         <div class="balances">
-                            <div class="balance-item"><span>CTC Saldo:</span> <strong>${this.wallet.balances.ctc}</strong></div>
-                            <div class="balance-item"><span>AXF Saldo:</span> <strong>${this.wallet.balances.axf}</strong></div>
-                            <div class="balance-item"><span>Majorana-Garantie:</span> <strong>${this.wallet.balances.majorana}</strong></div>
+                            <div class="balance-item"><span>CTC Saldo (handelbar):</span> <strong>${this.wallet.balances.ctc.toLocaleString('de-DE')}</strong></div>
+                            <div class="balance-item"><span>AXF Saldo (Datenwert):</span> <strong>${this.wallet.balances.axf.toLocaleString('de-DE')}</strong></div>
+                            <div class="balance-item"><span>Majorana Saldo (Sicherheit):</span> <strong>${this.wallet.balances.majorana}</strong></div>
                         </div>
 
                         <div class="wallet-actions">
@@ -147,7 +185,7 @@
                                 <button onclick="alert('Kreiere neuen Token-Typ...')">Kreieren</button>
                                 <button onclick="alert('Präge neue Token...')">Minten</button>
                                 <button onclick="alert('Verbrenne Token...')">Burnen</button>
-                                <button onclick="alert('Starte Mining-Prozess...')">Minen</button>
+                                <button onclick="alert('Zeige Mining-Status...')">Minen</button>
                                 <button id="staking-btn">Staken (GFSP-2025)</button>
                                 <button id="seed-phrase-btn">Seed Phrase anzeigen</button>
                             </div>
@@ -155,7 +193,7 @@
                         </div>
 
                         <div class="charts-container">
-                            <h3>Charts</h3>
+                            <h3>Markt-Charts</h3>
                             <p>(Hier würden interaktive Preis- und Verlaufs-Charts via Chart.js geladen)</p>
                         </div>
 
@@ -193,6 +231,7 @@
         const target = document.getElementById('wallet-app-target');
         if (target) {
             RFOF_APP.walletApp = new WalletApp(target);
+            RFOF_APP.walletApp.init();
         }
         window.RFOF_APP = RFOF_APP;
     });
