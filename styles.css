@@ -124,12 +124,10 @@ strong {
     h3 { font-size: 1.4em; }
 }
 
-
 /*
 #================================================
-# TEIL 2: ADDITIVE STILE FÜR DIE WALLET-RAPP
+# TEIL 2: ADDITIVE STILE FÜR DIE WALLET-RAPP (ZENITH)
 # FUNKTION: Definiert das Aussehen der neuen, interaktiven Wallet-Komponenten.
-# STATUS: Final, additiv.
 #================================================
 */
 #wallet-app-section { 
@@ -138,6 +136,9 @@ strong {
     border-radius: 8px; 
     padding: 1.5rem; 
     margin-top: 2rem; 
+}
+#wallet-app-section h2 {
+    font-size: 1.6em;
 }
 
 .wallet-connector {
@@ -170,16 +171,23 @@ strong {
 .wallet-connector button.primary {
     background: #0088cc;
     border-color: #0088cc;
+    font-weight: bold;
 }
 
 .wallet-dashboard {
     margin-top: 1rem;
 }
 
+.wallet-dashboard h3 {
+    font-size: 1.2em;
+    border-bottom: none;
+}
+
 .wallet-dashboard h3 .hash-link {
     font-family: 'Fira Code', monospace;
     font-size: 0.8em;
     font-weight: normal;
+    color: #0088cc;
 }
 
 .balances {
@@ -196,7 +204,7 @@ strong {
     align-items: center;
     padding: 0.75rem 0;
     border-bottom: 1px solid #eee;
-    font-size: 1.1em;
+    font-size: 1.05em;
 }
 .balance-item:last-child {
     border-bottom: none;
@@ -211,12 +219,6 @@ strong {
     padding: 1.5rem;
     background: #e9ecef;
     border-radius: 6px;
-}
-
-.wallet-actions h3 {
-    margin-top: 0;
-    font-size: 1.2em;
-    border-bottom: none;
 }
 
 .wallet-actions .action-grid {
@@ -258,6 +260,7 @@ strong {
     user-select: all;
     text-align: center;
     word-spacing: 0.5em;
+    color: #c53030;
 }
 
 .charts-container, .rapp-store-placeholder {
@@ -266,5 +269,5 @@ strong {
     margin-top: 1.5rem;
     border: 2px dashed #ccc;
     border-radius: 8px;
-    background-color: #f0f2f5;
+    background-color: #FFFFFF;
 }
