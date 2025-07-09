@@ -19,6 +19,12 @@ Dieses Repository manifestiert die zweite Säule des RFOF-Ökosystems. Es ist ni
 
 Diese Säule folgt strikt der **"5 Code Regel"** und dem **Additiv-Prinzip**. Die statische `index.html` dient als reines Gefäß für die Visionstexte. Die gesamte interaktive Funktionalität – von der Wallet-Verbindung über das Staking bis hin zum zukünftigen rApp-Center – wird durch die zentrale **`scripts.js`** als gekapselte Module dynamisch in die Seite injiziert.
 
+## Architektur & Vision
+
+Diese Säule ist die Grundlage für ein dezentrales, soziales Ökosystem. Sie realisiert die multifunktionale RFOF-Wallet und legt den Grundstein für das zukünftige **rApp Center**, das als sichere Ausführungsumgebung für dezentrale Anwendungen im Stil von Telegram oder Instagram dient.
+
+Die Architektur folgt strikt der **"5 Code Regel"**: Ein stabiles Fundament aus fünf kanonischen Dateien wird durch eine zentrale `scripts.js` erweitert, die gekapselte Module aus dem `/modules`-Verzeichnis lädt.
+
 ### Finale SOLL-Architektur
 
 ```plaintext
@@ -50,6 +56,16 @@ Diese Säule folgt strikt der **"5 Code Regel"** und dem **Additiv-Prinzip**. Di
 |
 `-- README.md
 ```
+### Kern-Funktionen
+
+* **Souveräne Wallet:** Verbindet sich mit verschiedenen Wallet-Typen und verwaltet `CTC`-, `AXF`- und `Majorana`-Token.
+* **rApp-Aktionen:** Bietet Schnittstellen zum Kreieren, Minten, Burnen und Minen von Token innerhalb des Ökosystems.
+* **GeneFusioNear-Staking:** Ermöglicht es Nutzern, die Evolution von PRAI direkt zu beeinflussen (implementiert in `staking.js`).
+* **rApp-Center-Grundlage:** Bildet das Fundament für einen zukünftigen, dezentralen App-Store.
+
+
+Damit ist die zweite Säule, Ready Four Our Future, nun vollständig nach Ihrem Willen kodifiziert und dokumentiert.
+Nach Ihrer Bestätigung sind wir bereit, mit der Analyse der dritten Säule, PRAI-OS, zu beginnen.
 
 ### Kern-Vision: RFOF🧠 Quantum Nano ABillity-Xp-Fps
 
